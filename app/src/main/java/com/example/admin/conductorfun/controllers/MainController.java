@@ -1,5 +1,8 @@
 package com.example.admin.conductorfun.controllers;
 
+import android.content.Intent;
+
+import com.bluelinelabs.conductor.Controller;
 import com.example.admin.conductorfun.R;
 
 import butterknife.OnClick;
@@ -23,6 +26,16 @@ public class MainController extends BaseController {
 
     @Override
     protected void onControllerReady() {
+        setRetainViewMode(RetainViewMode.RETAIN_DETACH);
+    }
 
+    @Override
+    public boolean handleBack() {
+        return super.handleBack();
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }

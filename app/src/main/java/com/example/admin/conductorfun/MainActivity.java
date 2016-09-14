@@ -6,9 +6,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.ViewGroup;
 
 import com.bluelinelabs.conductor.Conductor;
+import com.bluelinelabs.conductor.Controller;
+import com.bluelinelabs.conductor.ControllerChangeHandler;
 import com.bluelinelabs.conductor.Router;
 import com.bluelinelabs.conductor.RouterTransaction;
+import com.bluelinelabs.conductor.changehandler.AutoTransitionChangeHandler;
 import com.bluelinelabs.conductor.changehandler.FadeChangeHandler;
+import com.bluelinelabs.conductor.changehandler.SimpleSwapChangeHandler;
+import com.bluelinelabs.conductor.changehandler.VerticalChangeHandler;
 import com.example.admin.conductorfun.controllers.MainController;
 
 /**
@@ -31,9 +36,20 @@ public class MainActivity extends AppCompatActivity {
             router.setRoot(RouterTransaction
                     .with(new MainController())
                     .tag(MainController.TAG)
-                    .pushChangeHandler(new FadeChangeHandler())
+                    .pushChangeHandler(new SimpleSwapChangeHandler())
                     .popChangeHandler(new FadeChangeHandler()));
         }
 
+        router.addChangeListener(new ControllerChangeHandler.ControllerChangeListener() {
+            @Override
+            public void onChangeStarted(Controller to, Controller from, boolean isPush, ViewGroup container, ControllerChangeHandler handler) {
+
+            }
+
+            @Override
+            public void onChangeCompleted(Controller to, Controller from, boolean isPush, ViewGroup container, ControllerChangeHandler handler) {
+
+            }
+        });
     }
 }
