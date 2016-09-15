@@ -25,8 +25,8 @@ public abstract class BaseController extends Controller {
     @Override
     protected View onCreateView(@NonNull LayoutInflater inflater, @NonNull ViewGroup container) {
         View view = inflater.inflate(getControllerLayout(), container, false);
-        ;
         unbinder = ButterKnife.bind(this, view);
+        onControllerReady();
         return view;
     }
 
