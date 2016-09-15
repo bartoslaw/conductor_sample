@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.bluelinelabs.conductor.Conductor;
 import com.bluelinelabs.conductor.Controller;
@@ -41,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         router.addChangeListener(new ControllerChangeHandler.ControllerChangeListener() {
             @Override
             public void onChangeStarted(Controller to, Controller from, boolean isPush, ViewGroup container, ControllerChangeHandler handler) {
-
+                Toast.makeText(MainActivity.this, "I am changing from: " + from.getClass().getSimpleName() + " to: " + to.getClass().getSimpleName(), Toast.LENGTH_SHORT).show();
             }
 
             @Override
