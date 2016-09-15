@@ -10,9 +10,7 @@ import com.bluelinelabs.conductor.Controller;
 import com.bluelinelabs.conductor.ControllerChangeHandler;
 import com.bluelinelabs.conductor.Router;
 import com.bluelinelabs.conductor.RouterTransaction;
-import com.bluelinelabs.conductor.changehandler.AutoTransitionChangeHandler;
 import com.bluelinelabs.conductor.changehandler.FadeChangeHandler;
-import com.bluelinelabs.conductor.changehandler.SimpleSwapChangeHandler;
 import com.bluelinelabs.conductor.changehandler.VerticalChangeHandler;
 import com.example.admin.conductorfun.controllers.MainController;
 
@@ -36,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
             router.setRoot(RouterTransaction
                     .with(new MainController())
                     .tag(MainController.TAG)
-                    .pushChangeHandler(new SimpleSwapChangeHandler())
+                    .pushChangeHandler(new VerticalChangeHandler())
                     .popChangeHandler(new FadeChangeHandler()));
         }
 
@@ -51,5 +49,12 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (!router.handleBack()) {
+            super.onBackPressed();
+        }
     }
 }

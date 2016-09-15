@@ -5,6 +5,7 @@ import android.content.Intent;
 import com.bluelinelabs.conductor.RouterTransaction;
 import com.bluelinelabs.conductor.changehandler.HorizontalChangeHandler;
 import com.bluelinelabs.conductor.changehandler.SimpleSwapChangeHandler;
+import com.bluelinelabs.conductor.changehandler.VerticalChangeHandler;
 import com.example.admin.conductorfun.R;
 
 import butterknife.OnClick;
@@ -22,7 +23,7 @@ public class MainController extends BaseController {
                 RouterTransaction
                         .with(new SubController())
                         .tag(SubController.TAG)
-                        .pushChangeHandler(new SimpleSwapChangeHandler())
+                        .pushChangeHandler(new VerticalChangeHandler())
                         .popChangeHandler(new HorizontalChangeHandler()));
     }
 
